@@ -1,0 +1,26 @@
+{
+  "name": "herencia",
+  "version": "1.0.0",
+  "description": "ejemplos de objetos y herencia.",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --require should"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:SYTW/js-inheritance-examples.git"
+  },
+  "keywords": [
+    "js",
+    "inheritance"
+  ],
+  "author": "Casiano Rodriguez Leon",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "mocha": "^2.3.3",
+    "should": "^7.1.1"
+  }
+}
