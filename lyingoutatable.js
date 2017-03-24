@@ -1,40 +1,3 @@
-function repeat(string, times) {
-  var result = "";
-  for (var i = 0; i < times; i++)
-    result += string;
-  return result;
-}
-
-// UnderlinedCell Class
-function UnderlinedCell(inner) {
-  this.inner = inner;
-}
-/*
-minWidth() returns a number indicating this cell’s minimum width
-(in characters).
-*/
-UnderlinedCell.prototype.minWidth = function() {
-  return this.inner.minWidth();
-};
-/*
-minHeight() returns a number indicating the minimum height this
-cell requires (in lines).
-*/
-UnderlinedCell.prototype.minHeight = function() {
-  return this.inner.minHeight() + 1;
-};
-
-/*
-draw(width, height) returns an array of length height, which contains
-a series of strings that are each width characters wide. This
-represents the content of the cell.
-*/
-UnderlinedCell.prototype.draw = function(width, height) {
-  return this.inner.draw(width, height - 1)
-    .concat([repeat("-", width)]);
-};    
-// End UnderlinedCell    
-
 // TextCell Class
 function TextCell(text) {
   this.text = text.split("\n");
@@ -80,6 +43,43 @@ Object.defineProperty(TextCell.prototype, "heightProp", {
   get: function() { return this.text.length; }
 });
 // End TextCell
+
+function repeat(string, times) {
+  var result = "";
+  for (var i = 0; i < times; i++)
+    result += string;
+  return result;
+}
+
+// UnderlinedCell Class
+function UnderlinedCell(inner) {
+  this.inner = inner;
+}
+/*
+minWidth() returns a number indicating this cell’s minimum width
+(in characters).
+*/
+UnderlinedCell.prototype.minWidth = function() {
+  return this.inner.minWidth();
+};
+/*
+minHeight() returns a number indicating the minimum height this
+cell requires (in lines).
+*/
+UnderlinedCell.prototype.minHeight = function() {
+  return this.inner.minHeight() + 1;
+};
+
+/*
+draw(width, height) returns an array of length height, which contains
+a series of strings that are each width characters wide. This
+represents the content of the cell.
+*/
+UnderlinedCell.prototype.draw = function(width, height) {
+  return this.inner.draw(width, height - 1)
+    .concat([repeat("-", width)]);
+};    
+// End UnderlinedCell    
 
 //---------------------------------------------
 function rowHeights(rows) {
