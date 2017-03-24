@@ -3,6 +3,9 @@
 Forman parte de este ejemplo los ficheros:
 
 ```
+gulpfile.js         - test: run mocha tests
+                    - debug: uses chrome to debug the program
+                    - run: run the program
 lyingoutatable.js   - La librería con las clases
 main-draw-table.jsa - Programa principal que usa la librería
 test/test.js        - pruebas en Mocha
