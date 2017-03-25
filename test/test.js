@@ -15,15 +15,15 @@ var MOUNTAINS = [
 var expected = 
 `name           height country      
 -------------- ------ -------------
-Kilimanjaro    5895   Tanzania     
+Kilimanjaro      5895 Tanzania     
 Montaña mágica                     
-Everest        8848   Nepal        
+Everest          8848 Nepal        
                       País lejano  
-Mount Fuji     3776   Japan        
-Mont Blanc     4808   Italy/France 
-Vaalserberg    323    Netherlands  
-Denali         6168   United States
-Popocatepetl   5465   Mexico       `;
+Mount Fuji       3776 Japan        
+Mont Blanc       4808 Italy/France 
+Vaalserberg       323 Netherlands  
+Denali           6168 United States
+Popocatepetl     5465 Mexico       `;
 
 describe("drawIt", function() {
   it("must draw the mountains table correctly", function() {

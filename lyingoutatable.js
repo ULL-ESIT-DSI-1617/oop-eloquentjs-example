@@ -76,6 +76,21 @@ UnderlinedCell.prototype.draw = function(width, height) {
 };    
 // End UnderlinedCell    
 
+// RTextCell
+function RTextCell(text) {
+  TextCell.call(this, text);
+}
+RTextCell.prototype = Object.create(TextCell.prototype);
+RTextCell.prototype.draw = function(width, height) {
+  var result = [];
+  for (var i = 0; i < height; i++) {
+    var line = this.text[i] || "";
+    result.push(repeat(" ", width - line.length) + line);
+  }
+  return result;
+};
+// End RTextCell    
+
 //---------------------------------------------
 /*
   return the array of maximum heights of each row
@@ -106,7 +121,12 @@ function dataTable(data) {
   });
   var body = data.map(function(row) {
     return keys.map(function(name) {
-      return new TextCell(String(row[name]));
+      // return new TextCell(String(row[name]));
+      var value = row[name];
+      if (/^\s*[-+]?\d+([.]\d*)?([eE][-+]?\d+)?\s*$/.test(value))
+        return new RTextCell(String(value));
+      else
+        return new TextCell(String(value));
     });
   });
   return [headers].concat(body);
