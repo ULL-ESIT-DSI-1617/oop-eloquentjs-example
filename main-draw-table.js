@@ -1,4 +1,4 @@
-var drawTable = require("lyingoutatable");
+var drawIt = require("lyingoutatable").drawIt;
 var MOUNTAINS = require("./mountains.json");
 
-console.log(drawTable(MOUNTAINS));
+console.log(drawIt(MOUNTAINS));

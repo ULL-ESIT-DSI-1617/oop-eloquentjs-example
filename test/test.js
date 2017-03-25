@@ -1,5 +1,6 @@
-// Testing drawTable
-var drawTable = require('../lyingoutatable.js');
+// Testing drawIt
+var dt = require("../lyingoutatable.js");
+var drawIt = dt.drawIt;
 
 var MOUNTAINS = [
   {name: "Kilimanjaro\nMontaña mágica", height: 5895, country: "Tanzania"},
@@ -24,9 +25,36 @@ Vaalserberg    323    Netherlands
 Denali         6168   United States
 Popocatepetl   5465   Mexico       `;
 
-describe("drawTable", function() {
+describe("drawIt", function() {
   it("must draw the mountains table correctly", function() {
-    drawTable(MOUNTAINS).should.equal(expected);
+    drawIt(MOUNTAINS).should.equal(expected);
   })
 });
 
+var TextCell = dt.TextCell;
+var drawTable = dt.drawTable;
+
+function checkerboard() {
+  var rows = [];
+  for (var i = 0; i < 5; i++) {
+     var row = [];
+     for (var j = 0; j < 5; j++) {
+       row.push(new TextCell(((j+i)%2)? " " : "##"));
+     }
+     rows.push(row);
+  }
+  return rows;
+}
+
+
+var expectedCheckerboard = 
+`##    ##    ##
+   ##    ##   
+##    ##    ##
+   ##    ##   
+##    ##    ##`;
+describe("drawTable", function() {
+  it("must draw the checkerboard correctly", function() {
+    drawTable(checkerboard()).should.equal(expectedCheckerboard);
+  })
+});
