@@ -1,9 +1,19 @@
-function repeat(string, times) {
+// Utils: Monkey Patching
+String.prototype.repeat = function(times) {
   var result = "";
   for (var i = 0; i < times; i++)
-    result += string;
+    result += this;
   return result;
 }
+
+Array.prototype.range = function(block) {
+  var r = [];
+  for(var i = this[0]; i<this[1]; i++) {
+    r.push(block(i));
+  }
+  return r;
+} 
+// End Utils
 
 // TextCell Class
 function TextCell(text) {
@@ -39,7 +49,7 @@ TextCell.prototype.draw = function(width, height) {
   var result = [];
   for (var i = 0; i < height; i++) {
     var line = this.text[i] || "";
-    result.push(line + repeat(" ", width - line.length));
+    result.push(line + " ".repeat(width - line.length));
   }
   return result;
 };    
@@ -72,7 +82,7 @@ UnderlinedCell.prototype.minHeight = function() {
 */
 UnderlinedCell.prototype.draw = function(width, height) {
   return this.inner.draw(width, height - 1)
-    .concat([repeat("-", width)]);
+    .concat(["-".repeat(width)]);
 };    
 // End UnderlinedCell    
 
@@ -85,7 +95,7 @@ RTextCell.prototype.draw = function(width, height) {
   var result = [];
   for (var i = 0; i < height; i++) {
     var line = this.text[i] || "";
-    result.push(repeat(" ", width - line.length) + line);
+    result.push(" ".repeat(width - line.length) + line);
   }
   return result;
 };
@@ -162,6 +172,7 @@ module.exports = {
   drawIt: drawIt,
   drawTable: drawTable,
   TextCell: TextCell,
+  RTextCell: RTextCell,
   UnderlinedCell: UnderlinedCell
 };
 

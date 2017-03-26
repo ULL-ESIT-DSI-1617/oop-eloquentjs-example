@@ -46,7 +46,6 @@ function checkerboard() {
   return rows;
 }
 
-
 var expectedCheckerboard = 
 `##    ##    ##
    ##    ##   
