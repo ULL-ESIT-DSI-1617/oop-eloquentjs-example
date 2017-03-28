@@ -46,11 +46,19 @@ TextCell.prototype.minHeight = function() {
   represents the content of the cell.
 */
 TextCell.prototype.draw = function(width, height) {
+  var result = [0,height].range((i)=>i).map(
+    (i) => {
+      var line = this.text[i] || "";
+      return line + " ".repeat(width - line.length)
+    }
+  );
+  /*
   var result = [];
   for (var i = 0; i < height; i++) {
     var line = this.text[i] || "";
     result.push(line + " ".repeat(width - line.length));
   }
+  */
   return result;
 };    
 
@@ -133,6 +141,7 @@ function dataTable(data) {
     return keys.map(function(name) {
       // return new TextCell(String(row[name]));
       var value = row[name];
+      //  if (typeof value == "number")
       if (/^\s*[-+]?\d+([.]\d*)?([eE][-+]?\d+)?\s*$/.test(value))
         return new RTextCell(String(value));
       else
