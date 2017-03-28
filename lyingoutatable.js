@@ -158,12 +158,8 @@ function drawTable(rows) {
   }
 
   function drawRow(row, rowNum) {
-    var blocks = row.map(function(cell, colNum) {
-      return cell.draw(widths[colNum], heights[rowNum]);
-    });
-    return blocks[0].map(function(_, lineNo) {
-      return drawLine(blocks, lineNo);
-    }).join("\n");
+    var blocks = row.map((cell, colNum) => cell.draw(widths[colNum], heights[rowNum]));
+    return blocks[0].map((_, lineNo) => drawLine(blocks, lineNo)).join("\n");
   }
 
   return rows.map(drawRow).join("\n");
