@@ -115,9 +115,7 @@ RTextCell.prototype.draw = function(width, height) {
 */
 function rowHeights(rows) {
   return rows.map(function(row) {
-    return row.reduce(function(max, cell) {
-      return Math.max(max, cell.minHeight());
-    }, 0);
+    return row.reduce((max, cell) => Math.max(max, cell.minHeight()), 0);
   });
 }
 
@@ -126,9 +124,7 @@ function rowHeights(rows) {
 */
 function colWidths(rows) {
   return rows[0].map(function(_, i) {
-    return rows.reduce(function(max, row) {
-      return Math.max(max, row[i].minWidth());
-    }, 0);
+    return rows.reduce((max, row) => Math.max(max, row[i].minWidth()), 0);
   });
 }
     
