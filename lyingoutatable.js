@@ -161,6 +161,8 @@ function drawTable(rows) {
     var blocks = row.map((cell, colNum) => cell.draw(widths[colNum], heights[rowNum]));
     return blocks[0].map((_, lineNo) => drawLine(blocks, lineNo)).join("\n");
   }
+   
+  debugger;
 
   return rows.map(drawRow).join("\n");
 }    
